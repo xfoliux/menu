@@ -1,0 +1,68 @@
+/* BASE GENERAL */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e2e8f0;
+    margin: 0;
+    padding: 40px;
+    line-height: 1.6;
+}
+
+/* TITULO PRINCIPAL */
+h1 {
+    font-size: 2.8rem;
+    color: #38bdf8;
+    text-align: center;
+    margin-bottom: 20px;
+
+    /* EFECTO LLAMATIVO */
+    text-shadow: 0 0 12px rgba(56,189,248,0.6);
+}
+
+/* SUBTITULOS */
+h2 {
+    margin-top: 40px;
+    color: #facc15;
+    border-left: 4px solid #facc15;
+    padding-left: 10px;
+}
+
+/* TITULOS SECUNDARIOS */
+h3 {
+    margin-top: 25px;
+    color: #94a3b8;
+}
+
+/* PÁRRAFOS */
+p {
+    max-width: 700px;
+    color: #cbd5f5;
+}
+
+/* LINKS (PROYECTOS) */
+a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: bold;
+
+    color: #0f172a;
+    background: #38bdf8;
+
+    padding: 10px 16px;
+    border-radius: 8px;
+
+    transition: all 0.3s ease;
+}
+
+/* EFECTO HOVER */
+a:hover {
+    background: #0ea5e9;
+    box-shadow: 0 0 15px #38bdf8;
+    transform: translateY(-2px);
+}
+
+/* ESPACIADO GENERAL */
+h3 + a {
+    margin-bottom: 20px;
+}
