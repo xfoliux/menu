@@ -20,7 +20,7 @@ body::before {
     background: url("fondo.png") no-repeat center center;
     background-size: cover;
 
-    opacity: 0.25;
+    opacity: 0.50;
 
     z-index: -1;
 }
