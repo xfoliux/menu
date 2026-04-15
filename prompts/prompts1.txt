@@ -5,3 +5,4 @@ al momento de abrir cada archivo con estilos de letra recomendados
 manten mi codigo de HTML y entregame las mejoras por separado html y css
 
 
+agrega la imagen fondo.png sin realizar cambios en los estilos

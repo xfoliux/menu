@@ -8,6 +8,37 @@ body {
     line-height: 1.6;
 }
 
+/* IMAGEN DE FONDO (SIN ROMPER ESTILOS) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: url("fondo.png") no-repeat center center;
+    background-size: cover;
+
+    opacity: 0.25;
+
+    z-index: -1;
+}
+
+/* CAPA OSCURA PARA MEJOR VISIBILIDAD */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(rgba(2,6,23,0.7), rgba(2,6,23,0.9));
+
+    z-index: -1;
+}
+
 /* TITULO PRINCIPAL */
 h1 {
     font-size: 2.8rem;
@@ -15,7 +46,6 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
 
-    /* EFECTO LLAMATIVO */
     text-shadow: 0 0 12px rgba(56,189,248,0.6);
 }
 
