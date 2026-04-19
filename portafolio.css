@@ -1,98 +1,251 @@
-/* BASE GENERAL */
+
+/* =========================
+   BASE GENERAL
+========================= */
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #020617);
+
+    /* 🔥 FONDO ORIGINAL CONSERVADO */
+    background: linear-gradient(270deg, #020617, #0f172a, #020617);
+    background-size: 400% 400%;
+
     color: #e2e8f0;
+
     margin: 0;
     padding: 40px;
     line-height: 1.6;
+
+    animation: boot 1.2s ease-out, fondoMovimiento 14s ease infinite;
 }
 
-/* IMAGEN DE FONDO (SIN ROMPER ESTILOS) */
+/* =========================
+   ANIMACIONES BASE
+========================= */
+
+@keyframes boot {
+    0% {
+        opacity: 0;
+        transform: scale(0.98);
+        filter: brightness(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+@keyframes fondoMovimiento {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   FONDO CINEMÁTICO (MEJORADO)
+========================= */
+
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
 
-    background: url("/fondo.png") no-repeat center center;
+    /* 🌌 capa de profundidad */
+    background:
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,0.12), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(34,197,94,0.10), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(250,204,21,0.06), transparent 50%),
+        url("/fondo.png") no-repeat center center;
+
     background-size: cover;
 
-    opacity: 0.50;
+    opacity: 0.22;
 
-    z-index: -1;
+    filter: saturate(1.2) contrast(1.1);
+
+    z-index: -2;
 }
 
-/* CAPA OSCURA PARA MEJOR VISIBILIDAD */
+/* 🌐 glow dinámico (tipo aurora tech) */
 body::after {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
 
-    background: linear-gradient(rgba(2,6,23,0.7), rgba(2,6,23,0.9));
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(56,189,248,0.08),
+        rgba(34,197,94,0.05),
+        transparent 70%
+    );
+
+    animation: aurora 12s ease-in-out infinite;
 
     z-index: -1;
+    pointer-events: none;
 }
 
-/* TITULO PRINCIPAL */
+@keyframes aurora {
+    0%   { transform: scale(1) translateY(0); opacity: 0.5; }
+    50%  { transform: scale(1.2) translateY(-10px); opacity: 0.3; }
+    100% { transform: scale(1) translateY(0); opacity: 0.5; }
+}
+
+/* =========================
+   TITULO PRINCIPAL
+========================= */
+
 h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     color: #38bdf8;
+
     text-align: center;
     margin-bottom: 20px;
 
-    text-shadow: 0 0 12px rgba(56,189,248,0.6);
+    white-space: nowrap;
+    overflow: hidden;
+
+    border-right: 2px solid #22c55e;
+
+    width: 0;
+    animation: typing 3s steps(30, end) forwards;
+
+    text-shadow: 0 0 25px rgba(56,189,248,0.5);
 }
 
-/* SUBTITULOS */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+h1::after {
+    content: "_";
+    animation: blink 1s infinite;
+    color: #22c55e;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
 h2 {
     margin-top: 40px;
     color: #facc15;
     border-left: 4px solid #facc15;
     padding-left: 10px;
+
+    opacity: 0.95;
 }
 
-/* TITULOS SECUNDARIOS */
 h3 {
-    margin-top: 25px;
+    margin-top: 30px;
     color: #94a3b8;
 }
 
-/* PÁRRAFOS */
 p {
     max-width: 700px;
     color: #cbd5f5;
+    opacity: 0.9;
 }
 
-/* LINKS (PROYECTOS) */
+/* =========================
+   BOTONES NIVEL PRODUCTO
+========================= */
+
 a {
-    display: inline-block;
-    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 12px;
+    margin-bottom: 10px;
+
+    font-family: 'Fira Code', monospace;
+
+    color: #22c55e;
     text-decoration: none;
-    font-weight: bold;
 
-    color: #0f172a;
-    background: #38bdf8;
+    padding: 12px 18px;
 
-    padding: 10px 16px;
+    border: 1px solid rgba(34,197,94,0.4);
     border-radius: 8px;
 
-    transition: all 0.3s ease;
+    background: rgba(2, 6, 23, 0.85);
+
+    position: relative;
+    overflow: hidden;
+
+    letter-spacing: 1px;
+
+    transition: all 0.25s ease;
+
+    box-shadow: 0 0 12px rgba(34,197,94,0.12);
 }
 
-/* EFECTO HOVER */
+/* icono tipo terminal */
+a::before {
+    content: ">";
+    color: #38bdf8;
+}
+
+/* línea de energía */
+a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(34,197,94,0.35),
+        transparent
+    );
+}
+
+/* hover */
 a:hover {
-    background: #0ea5e9;
-    box-shadow: 0 0 15px #38bdf8;
-    transform: translateY(-2px);
+    color: #020617;
+    background: #22c55e;
+
+    transform: translateY(-3px) scale(1.04);
+
+    box-shadow:
+        0 0 20px #22c55e,
+        0 0 50px rgba(34,197,94,0.4);
 }
 
-/* ESPACIADO GENERAL */
+a:hover::after {
+    animation: scan 0.7s linear;
+}
+
+@keyframes scan {
+    to { left: 120%; }
+}
+
+/* click */
+a:active {
+    transform: scale(0.96);
+}
+
+/* estado loading */
+a.loading {
+    pointer-events: none;
+    color: #0f172a;
+    background: #22c55e;
+    box-shadow: 0 0 25px #22c55e;
+}
+
+/* espaciado */
 h3 + a {
     margin-bottom: 20px;
 }
